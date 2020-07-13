@@ -1,0 +1,18 @@
+html
+  head
+    title= title
+    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+  body
+    ul
+      each user in users 
+        li(class="user")
+          //- i(class="material-icons") account_box
+          picture
+            source(media="(min-width:650px)", srcset=`${user.picture.large}`)
+            source(media="(min-width:465px)", srcset=`${user.picture.medium}`)
+            img(src=`${user.picture.thumbnail}`, alt="profile_thumbnail", style="width:auto;")
+          h3 #{`${user.name.title} ${user.name.first} ${user.name.last}`}
+          p #{user.login.username}
+          p #{`${user.location.state}, ${user.location.country}`}
